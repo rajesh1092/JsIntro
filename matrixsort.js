@@ -1,32 +1,27 @@
-var matrix = [
-    [1, 3, 9, 4],
-    [9, 5, 7, 7],
-    [3, 6, 9, 7],
-    [1, 2, 2, 2],
-  ];
-var i = 0;
-var j = 0;
-var a = true;
-
-
-for(var n=0; n <= 6 ; n++){
-for (var i = 0; i < matrix.length; i++) {
-    rows = matrix.length;
-    cols = matrix[i].length;
-    if (rows != cols) {
-        console.log("Not a square matrix");
-        a = false;
-        break;
-    }
-    for (var j = 0; j < matrix.length; j++) {
+const arr = [
+  [1, 2, 3],
+  [4, 5, 6],
+  [7, 8, 9]
+];
+const findDiagonalOrder = (arr = []) => {
+  if(!arr.length){
+     return [];
+  }
+  let ind = 0;
+  let colBegin = 0, rowBegin = 0;
+  let rowMax = arr.length, colMax = arr[0].length;
+  const res = [], stack = [];
+  while(rowBegin< rowMax || colBegin<colMax) {
+     for(let row = rowBegin, col = colBegin; row < rowMax && col >=0 ;
+     row++,col--){
+      if(ind%2 === 0){
+             
+        stack.push((arr[row][col]));
+       // console.log(row,col);
+        console.log ("stack" +stack+ "\n");
+     }else{
+        res.push(arr[row][col]);
         
-        if( i+j == n){ 
-            //console.log(matrix[j][i]);
-            a = matrix[j][i];
-            if(a)
-            console.log(a);
-        }
-    }
-}
-console.log("\n");
-}
+        console.log("res:"+res);
+     }
+  }

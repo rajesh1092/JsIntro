@@ -1,0 +1,15 @@
+{
+  "name": "jsintro",
+  "version": "1.0.0",
+  "description": "Hey I am learning Git commands",
+  "main": "a.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com-raj:rama1092/JsIntro.git"
+  },
+  "author": "",
+  "license": "ISC"
+}
