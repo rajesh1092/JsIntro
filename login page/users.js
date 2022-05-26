@@ -10,7 +10,7 @@ const users = async () => {
   const userlist = JSON.stringify(res);
   var user_Data = JSON.parse(userlist);
   var user_Obj = user_Data["data"];
-  var list = document.getElementById("list"), container, key, id, email, first_Name, user_Img, image;
+  var list = document.getElementById("list"), container, key, id, email, first_Name, user_Img, image,update_Button;
   for (var i = 0; i < user_Obj.length; i++) {
     container = document.createElement("div");
       container.className = "container";
@@ -35,11 +35,15 @@ const users = async () => {
         user_Img = document.createElement("div");
           user_Img.className = " user_Img";
           container.append( user_Img);
-        //document.getElementsByClassName('user_Img')[i].innerHTML = "User Image";
         image = document.createElement("img");
           image.style = "margin : 10px";
           image.src = user_Obj[i].avatar;
           user_Img.appendChild(image);
+        update_Button = document.createElement("button");
+          update_Button.type = "submit";
+          update_Button.className = "update_Button";
+          container.append( update_Button);
+          document.getElementsByClassName("update_Button")[i].innerHTML = "UPDATE USER";
   }
 };
 var token = sessionStorage.getItem('token');
