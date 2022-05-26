@@ -97,12 +97,13 @@ const loginpage = async () => {
       password: pass,
     }),
   });
-  if(response.status == 200){
-  const res = await response.json(); 
-  const token = JSON.stringify(res);
-  console.log(token);
-    localStorage.setItem("token", token);
+  if (response.status == 200) {
+    const res = await response.json();
+    const token = JSON.stringify(res);
     console.log(token);
+    sessionStorage.setItem("token", token);
     window.location.href = "http://127.0.0.1:5500/login%20page/users.html";
-}
-}
+  } else {
+    passF("*Enter correct Email and password!!");
+  }
+};

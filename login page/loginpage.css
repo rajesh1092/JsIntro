@@ -1,8 +1,12 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+form {
+  border: 3px solid #f1f1f1;
+}
 
-body {font-family: Arial, Helvetica, sans-serif;}
-form {border: 3px solid #f1f1f1;}
-
-input[type=text], input[type=password] {
+input[type="text"],
+input[type="password"] {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
@@ -12,7 +16,7 @@ input[type=text], input[type=password] {
 }
 
 button {
-  background-color: #04AA6D;
+  background-color: #04aa6d;
   color: white;
   padding: 14px 20px;
   margin: 8px 0;
@@ -42,10 +46,10 @@ img.avatar {
 }
 
 .container {
-    padding: 50px;
-    width: 50%;
-    /* justify-items: center; */
-    margin-left: 25%;
+  padding: 50px;
+  width: 50%;
+  /* justify-items: center; */
+  margin-left: 25%;
 }
 
 span.psw {
@@ -97,56 +101,63 @@ span.psw {
   -webkit-animation: fadeIn 1s;
   animation: fadeIn 1s;
 }
-.myPop{
+.myPop {
   color: #f44336;
   font-size: small;
 }
-.myPopup{
+.myPopup {
   color: #f44336;
   font-size: small;
 }
 
 /* Add animation (fade in the popup) */
 @-webkit-keyframes fadeIn {
-  from {opacity: 0;} 
-  to {opacity: 1;}
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes fadeIn {
-  from {opacity: 0;}
-  to {opacity:1 ;}
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 /* Change styles for span and cancel button on extra small screens */
 @media screen and (max-width: 300px) {
   span.psw {
-     display: block;
-     float: none;
+    display: block;
+    float: none;
   }
   .cancelbtn {
-     width: 100%;
+    width: 100%;
   }
 }
 
 .App {
-    font-family: sans-serif;
-    text-align: center;
-  }
-  
-  .flex {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .flex > div {
-    margin: 0 1rem 2rem 1rem;
-    text-align: center;
-  }
-  
-  img {
-    display: inline-block;
-    max-width: 100%;
-  }
-  
+  font-family: sans-serif;
+  text-align: center;
+}
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex > div {
+  margin: 0 1rem 2rem 1rem;
+  text-align: center;
+}
+
+img {
+  display: inline-block;
+  max-width: 100%;
+}
