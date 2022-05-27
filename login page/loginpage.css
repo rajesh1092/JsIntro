@@ -147,7 +147,7 @@ span.psw {
 
 .list {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap : ;
   justify-content: center;
   align-items: center;
 }
@@ -160,4 +160,7 @@ span.psw {
 img {
   display: inline-block;
   max-width: 100%;
+}
+{
+  
 }
