@@ -10,28 +10,23 @@ const users = async () => {
   const userlist = JSON.stringify(res);
   var user_Data = JSON.parse(userlist);
   var user_Obj = user_Data["data"];
-  var num_User = user_Obj.length;
   var list = document.getElementById("list"),
     container,
-    key,
     id,
     email,
     first_Name,
     user_Img,
     image;
-  for (var i = 0; i < num_User; i++) {
+  for (var i = 0; i < user_Obj.length; i++) {
     container = document.createElement("div");
     container.className = "container";
     container.style = "margin : 30px";
     list.append(container);
-    key = document.createElement("div");
-    key.className = "fw-bolder";
-    container.append(key);
-    document.getElementsByClassName("fw-bolder")[i].innerHTML = "key: " + i;
+    
     id = document.createElement("div");
     id.className = "fw-bold";
     container.append(id);
-    document.getElementsByClassName("fw-bold")[i].innerHTML = "User id: " + (i +7 );
+    document.getElementsByClassName("fw-bold")[i].innerHTML = "User id: " + user_Obj[i].id;
     
       email = document.createElement("div");
     email.className = "fw-normal; email";
@@ -50,6 +45,15 @@ const users = async () => {
     image.style = "margin : 10px";
     image.src = user_Obj[i].avatar;
     user_Img.appendChild(image);
+
+    var button_Update = document.createElement("button");
+    button_Update.type = "submit";
+    button_Update.className = "btn btn-outline-secondary; update_User";
+    button_Update.style = "width : 200px; margin:10px; background-color: gainsboro";
+    button_Update.id = "update_User";
+    container.append(button_Update);
+    document.getElementsByClassName("update_User")[i].innerHTML = "Update user";
+    
    
   }
   var button = document.createElement("div");
@@ -57,41 +61,30 @@ const users = async () => {
     button.style = "margin : 30px; display: grid!imprtant;width : 100%;";
     list.append(button);
 
-  var user_Id = document.createElement("input");
   var user_Mail = document.createElement("input");
   var user_firstName = document.createElement("input");
   var user_lastName = document.createElement("input");
   var user_Image = document.createElement("input");
-  user_Id.placeholder = "Enter User id you wish to update ";
   user_Mail.placeholder = "Enter User Mail Id";
   user_firstName.placeholder = "Enter User First Name";
   user_lastName.placeholder = "Enter User Last Name";
   user_Image.placeholder = "Enter Image reference";
-  user_Id.className = "list-group-item";
   user_Mail.className = "list-group-item";
   user_firstName.className = "list-group-item";
   user_lastName.className = "list-group-item";
   user_Image.className = "list-group-item";
-  user_Id.id = "user_Id";
   user_Mail.id = "user_Mail";
   user_firstName.id = "user_firstName";
   user_lastName.id = "user_lastName";
   user_Image.id = "user_Image"; 
   user_Image.style = "size: 128 * 128 px"
   
-  button.append(user_Id);
   button.append(user_Mail);
   button.append(user_firstName);
   button.append(user_lastName);
   button.append(user_Image);
 
-  var button_Update = document.createElement("button");
-    button_Update.type = "submit";
-    button_Update.className = "btn btn-primary";
-    button_Update.style = "width : 200px; margin:10px";
-    button_Update.id = "update_User";
-    button.append(button_Update);
-    document.getElementById("update_User").innerHTML = "Update user";
+
   var button_Add = document.createElement("button");
     button_Add.type = "submit";
     button_Add.className = "btn btn-secondary ms-3";
@@ -102,7 +95,6 @@ const users = async () => {
     
     document.getElementById("add_User").onclick = function add_Newuser(){
         var data = {
-          "id" : num_User + 7,
           "email" : document.getElementById("user_Mail").value,
           "first_name" : document.getElementById("user_firstName").value,
           "last_name" : document.getElementById("user_lastName").value,
@@ -116,8 +108,13 @@ const users = async () => {
                "content-type" : "application/json; charset=UTF-8"},
             body: JSON.stringify(data),
           });
+          var res = await response.json();
+          debugger;
+          console.log(typeof(res));
+           var  new_user = res;
+           console.log(new_user);
           if (response.status == 201){
-             window.location.reload();
+            console.log(user_Obj); 
           }    
         }
         Add_User();
