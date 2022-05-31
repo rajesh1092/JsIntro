@@ -1,0 +1,8 @@
+.modal_body{
+    display: inline-grid;
+    
+}
+
+#mUser_Mail{
+    max-width: 300px;
+}
