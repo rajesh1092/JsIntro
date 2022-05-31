@@ -1,4 +1,3 @@
-
 var users = async () => {
   const response = await fetch("https://reqres.in/api/users?page=2", {
     method: "get",
@@ -11,9 +10,11 @@ var users = async () => {
   const userlist = JSON.stringify(res);
   var user_Data = JSON.parse(userlist);
   var user_Obj = user_Data["data"];
-  console.log(user_Obj); 
+  console.log(user_Obj);
   for (var i = 0; i < user_Obj.length; i++) {
-    var table = document.getElementById("employeeList").getElementsByTagName("tbody")[0];
+    var table = document
+      .getElementById("employeeList")
+      .getElementsByTagName("tbody")[0];
     var newRow = table.insertRow(table.length);
     cell1 = newRow.insertCell(0);
     cell1.innerHTML = user_Obj[i].email;
@@ -21,13 +22,15 @@ var users = async () => {
     cell2.innerHTML = user_Obj[i].first_name;
     cell3 = newRow.insertCell(2);
     cell3.innerHTML = user_Obj[i].last_name;
-   // document.getElementsByClassName("myImg")[i].src = user_Obj[i].avatar;
-    cell4 = newRow.insertCell(3);
-    cell4.innerHTML = user_Obj[i].avatar;
+    myImg = document.createElement("img");
+    myImg.src = user_Obj[i].avatar;
+    myImg.className = "img_User";
+    myImg.style = "width: 128px; height: 128px";
+    cell4 = newRow.insertCell(3).appendChild(myImg);
+    cell4.innerHTML = myImg;
     cell5 = newRow.insertCell(4);
     cell5.innerHTML = `<a onClick="onEdit(this)">Edit</a>
                          <a onClick="onDelete(this)">Delete</a>`;
-
   }
 };
 users();
@@ -63,8 +66,12 @@ function insertNewRecord(data) {
   cell2.innerHTML = data.firstName;
   cell3 = newRow.insertCell(2);
   cell3.innerHTML = data.lastName;
-  cell4 = newRow.insertCell(3);
-  cell4.innerHTML = data.Image;
+  myImg = document.createElement("img");
+  myImg.src = data.Image;
+  myImg.className = "img_User";
+  myImg.style = "width: 128px; height: 128px";
+  cell4 = newRow.insertCell(3).appendChild(myImg);
+  cell4.innerHTML = myImg;
   cell5 = newRow.insertCell(4);
   cell5.innerHTML = `<a onClick="onEdit(this)">Edit</a>
                        <a onClick="onDelete(this)">Delete</a>`;
@@ -89,7 +96,11 @@ function updateRecord(formData) {
   selectedRow.cells[0].innerHTML = formData.email;
   selectedRow.cells[1].innerHTML = formData.firstName;
   selectedRow.cells[2].innerHTML = formData.lastName;
-  selectedRow.cells[3].innerHTML = formData.Image;
+  selectedRow.cells[3].innerHTML = "";
+  myImg = document.createElement("img");
+  myImg.src = formData.Image;
+  myImg.style = "width: 128px; height: 128px";
+  selectedRow.cells[3].appendChild(myImg).innerHTML = myImg;
 }
 
 function onDelete(td) {
