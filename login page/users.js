@@ -28,13 +28,15 @@ const users = async () => {
     container.append(id);
     document.getElementsByClassName("fw-bold")[i].innerHTML = "User id: " + user_Obj[i].id;
     
-      email = document.createElement("div");
+    email = document.createElement("div");
     email.className = "fw-normal; email";
+    email.id = "input_Email";
     container.append(email);
     document.getElementsByClassName("email")[i].innerHTML = "User E-mail: " + user_Obj[i].email;
    
     first_Name = document.createElement("div");
     first_Name.className = "fw-normal; first_Name";
+    first_Name.id = "input_Firstname"
     container.append(first_Name);
     document.getElementsByClassName("first_Name")[i].innerHTML = "Name: " + user_Obj[i].first_name + " " + user_Obj[i].last_name;
    
@@ -47,12 +49,16 @@ const users = async () => {
     user_Img.appendChild(image);
 
     var button_Update = document.createElement("button");
-    button_Update.type = "submit";
-    button_Update.className = "btn btn-outline-secondary; update_User";
+    button_Update.type = "button";
+    button_Update.className = "btn btn-primary; update_User";
     button_Update.style = "width : 200px; margin:10px; background-color: gainsboro";
     button_Update.id = "update_User";
+    button_Update.setAttribute("data-bs-toggle","modal");
+    button_Update.setAttribute("data-bs-target","#exampleModal");
     container.append(button_Update);
     document.getElementsByClassName("update_User")[i].innerHTML = "Update user";
+    
+    
     
    
   }
@@ -109,7 +115,6 @@ const users = async () => {
             body: JSON.stringify(data),
           });
           var res = await response.json();
-          debugger;
           console.log(typeof(res));
            var  new_user = res;
            console.log(new_user);
@@ -118,34 +123,20 @@ const users = async () => {
           }    
         }
         Add_User();
-    };
+    }; 
+   
+    // document.getElementById("update_User").onclick = function update_user(){
+    //   element = document.parentElement;
+    //   console.log(element);
+    // }
+    const child = document.getElementById('update_User');
 
-    document.getElementById("update_User").onclick = function update_User(){
+child.addEventListener('click', function handleClick(event) {
+  // 👇️ "parent"
+  console.log(event.target.parentElement.className);
+});
+  };
 
-      function Person(id_user,e_Mail,first,last,img) {
-        this.id = id_user;
-        this.email = e_Mail;
-        this.first_name = first;
-        this.last_name = last;
-        this.avatar= img;
-      }
-        var update_Obj = new Person(
-          document.getElementById("user_Id").value,
-          document.getElementById("user_Mail").value,
-          document.getElementById("user_firstName").value,
-          document.getElementById("user_lastName").value,
-          document.getElementById("user_Image").value)
-       console.log(user_Obj);
-        console.log(update_Obj);
-          var index = update_Obj.id - 7;
-        if (update_Obj.id == user_Obj[index].id){
-          user_Obj[index] = update_Obj;
-          console.log(user_Obj);
-        }
-    };
-
-    
-};
 
 var token = sessionStorage.getItem("token");
 if (token != null) {
