@@ -38,7 +38,14 @@ users();
 var selectedRow = null;
 
 function onFormSubmit() {
-  if (validate()) {
+    url = document.getElementById("Image").value;
+    const email = emailvalidation();
+    const urlimg =  is_url(url);
+    if (email != true && urlimg == true){
+        document.getElementById("urlValidationError").innerHTML= "";
+    }
+  if (email == true && urlimg == true) {
+    document.getElementById("urlValidationError").innerHTML= "";
     var formData = readFormData();
     if (selectedRow == null) insertNewRecord(formData);
     else updateRecord(formData);
@@ -86,11 +93,12 @@ function resetForm() {
 }
 
 function onEdit(td) {
+    document.getElementById("urlValidationError").innerHTML= "";
   selectedRow = td.parentElement.parentElement;
   document.getElementById("Email_Id").value = selectedRow.cells[0].innerHTML;
   document.getElementById("First_Name").value = selectedRow.cells[1].innerHTML;
   document.getElementById("Last_Name").value = selectedRow.cells[2].innerHTML;
-  document.getElementById("Image").value = selectedRow.cells[3].innerHTML;
+  document.getElementById("Image").value = selectedRow.cells[3].children[0].src;
 }
 function updateRecord(formData) {
   selectedRow.cells[0].innerHTML = formData.email;
@@ -104,25 +112,55 @@ function updateRecord(formData) {
 }
 
 function onDelete(td) {
-  if (confirm("Are you sure to delete this record ?")) {
+    document.getElementById("urlValidationError").innerHTML= "";
+    if (confirm("Are you sure to delete this record ?")) {
     row = td.parentElement.parentElement;
     document.getElementById("employeeList").deleteRow(row.rowIndex);
     resetForm();
   }
 }
-function validate() {
-  isValid = true;
-  if (document.getElementById("Email_Id").value == "") {
-    isValid = false;
-    document.getElementById("emailValidationError").classList.remove("hide");
-  } else {
-    isValid = true;
-    if (
-      !document
-        .getElementById("emailValidationError")
-        .classList.contains("hide")
-    )
-      document.getElementById("emailValidationError").classList.add("hide");
+
+function userF(msg) {
+  document.getElementById("emailValidationError").innerHTML = msg;
+}
+function emailvalidation() {
+  var format = /[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
+  var email = document.getElementById("Email_Id").value;
+  var a = email.length;
+  if (email == "") {
+    userF("Fill Email");
+    return false;
   }
-  return isValid;
+  if (a > 0 && a >= 45) {
+    userF("Email must be less than  20 characters");
+    return false;
+  }
+
+  if (a > 0 && !(/[a-z]/.test(email) || !/[A-Z]/.test(email))) {
+    userF("email must have  lower case letter");
+    return false;
+  }
+
+  if (a > 0 && !format.test(email)) {
+    userF("email should contain special character");
+    return false;
+  } else {
+    userF("");
+    return true;
+  }
+}
+function is_url(str) {
+
+  let regexp = /(http(s?):)([/|.|\w|\s|-])*\.(?:jpg|gif|png)/;
+  if (regexp.test(str)) {
+    return true;
+  } 
+  if (str == "") {
+    document.getElementById("urlValidationError").innerHTML = "Enter Image URL";
+    return false;
+  }
+  else {
+    document.getElementById("urlValidationError").innerHTML = "Invalid Url";
+    return false;
+  }
 }

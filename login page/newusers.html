@@ -15,7 +15,7 @@
 			<div class="employee-form">
                 <form onsubmit="event.preventDefault();onFormSubmit();" autocomplete="off">
                     <div> 
-                        <label>Email Id*</label><label class="validation-error hide" id="emailValidationError">This field is required.</label>
+                        <label>Email Id* </label><label style="color: red;" id="emailValidationError"></label>
                         <input type="text" name="Email_Id" id="Email_Id">
                     </div>
                     <div>
@@ -27,7 +27,7 @@
                         <input type="text" name="Last_Name" id="Last_Name">
                     </div>
                     <div>
-                        <label>Image</label>
+                        <label>Image* </label></label><label style="color: red;" id="urlValidationError"></label>
                         <input type="text" name="Image" id="Image">
                     </div>
                     <div  class="form-action-buttons">
