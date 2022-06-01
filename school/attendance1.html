@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" , href="attendance1.css" />
+  </head>
+  <body>
+    <h2>Login Form</h2>
+    <div class="logo">
+        <img id="school_logo" src="Capture.PNG" />
+        <h1 id="school_Name">DELHI PUBLIC SCHOOL SURAT</h1>
+    </div>
+    <div id="teacher">
+        <h2 id="teacher_text">TEACHER LOGIN</h2>
+    </div>
+      <div class="container">
+        <label  ><b>Name</b></label>       
+        <input id="username"    type="text" pattern="(?=.*[a-z])(?=.*[A-Z]).{8,}" placeholder="Enter Username" 
+        title="Must contain alphabets and one uppercase and lowercase letter, and at least 8 or more characters" required /> 
+        <span id = "myPopup" style="color:red; font-size: small;"></span> <br><br> 
+
+        <label ><b>Password</b></label>
+        <input
+          id="password"
+          type="password"
+          pattern="(?=.*[\ ^ ${ } [ ] ( ) . + ? | - & @ # *])(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6}" 
+          title="Must contain one special character and one uppercase and lowercase letter, and length must be 6 letters"
+          placeholder="Enter Password"
+          required
+        />
+        <span id = "myPop" style="color:red; font-size: small;" ></span> <br><br> 
+        
+        <button type="submit" id="submit" >Login</button>
+        
+      </div>
+   
+      <script src="attendance1.js"></script>
+  </body>
+  
+</html>

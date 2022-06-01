@@ -30,7 +30,7 @@ var users = async () => {
     cell4.innerHTML = myImg;
     cell5 = newRow.insertCell(4);
     cell5.innerHTML = `<a onClick="onEdit(this)">Edit</a>
-                         <a onClick="onDelete(this)">Delete</a>`;
+                       <a onClick="onDelete(this)">Delete</a>`;
   }
 };
 users();
