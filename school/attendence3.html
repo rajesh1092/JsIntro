@@ -25,25 +25,25 @@
                     <a class="nav-link" href="http://127.0.0.1:5500/school/attendance2.html">New student</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#">Students list</a>
+                    <a class="nav-link" onclick="studentsList(student_Obj)">Students list</a>
                   </li>
                   <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                       Attendance
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                      <li><a class="dropdown-item" href="#">class 1</a></li>
-                      <li><a class="dropdown-item" href="#">class 2</a></li>
-                      <li><a class="dropdown-item" href="#">class 3</a></li>
-                      <li><a class="dropdown-item" href="#">class 4</a></li>
-                      <li><a class="dropdown-item" href="#">class 5</a></li>
-                      <li><a class="dropdown-item" href="#">class 6</a></li>
-                      <li><a class="dropdown-item" href="#">class 7</a></li>
-                      <li><a class="dropdown-item" href="#">class 8</a></li>
-                      <li><a class="dropdown-item" href="#">class 9</a></li>
-                      <li><a class="dropdown-item" href="#">class 10</a></li>
-                      <li><a class="dropdown-item" href="#">class 11</a></li>
-                      <li><a class="dropdown-item" href="#">class 12</a></li>
+                      <li><a class="dropdown-item" id="class_1">class 1</a></li>
+                      <li><a class="dropdown-item" id="class_2">class 2</a></li>
+                      <li><a class="dropdown-item" id="class_3">class 3</a></li>
+                      <li><a class="dropdown-item" id="class_4">class 4</a></li>
+                      <li><a class="dropdown-item" id="class_5">class 5</a></li>
+                      <li><a class="dropdown-item" id="class_6">class 6</a></li>
+                      <li><a class="dropdown-item" id="class_7">class 7</a></li>
+                      <li><a class="dropdown-item" id="class_8">class 8</a></li>
+                      <li><a class="dropdown-item" id="class_9">class 9</a></li>
+                      <li><a class="dropdown-item" id="class_10">class 10</a></li>
+                      <li><a class="dropdown-item" id="class_11">class 11</a></li>
+                      <li><a class="dropdown-item" id="class_12">class 12</a></li>
                     </ul>
                   </li>
                 </ul>
@@ -59,6 +59,7 @@
                 <table class="list" id="employeeList">
                     <thead>
                         <tr>
+                            <th>Index</th>
                             <th>Student Id</th>
                             <th>First Name</th>
                             <th>Last Name</th>

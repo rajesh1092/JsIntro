@@ -4,11 +4,35 @@
 // } else {
 //   window.location.replace("http://127.0.0.1:5500/school/attendance1.html");
 // }
-
-  var data=[]; 
-  localStorage.setItem("student", data);
+  
   var selectedRow = null;
-  var count = 1;
+  function studentsList(){
+    var student_Obj = localStorage.getItem("students");
+    student_Obj = JSON.parse(student_Obj);
+    if(student_Obj != null){
+        for (var i = 0; i < student_Obj.length; i++) {
+          var table = document
+            .getElementById("employeeList")
+            .getElementsByTagName("tbody")[0];
+          var newRow = table.insertRow(table.length);
+          cell0 = newRow.insertCell(0);
+          cell0.innerHTML = i + 1;
+          cell1 = newRow.insertCell(1);
+          cell1.innerHTML = student_Obj[i].FirstName;
+          cell2 = newRow.insertCell(2);
+          cell2.innerHTML = student_Obj[i].LastName;
+          cell3 = newRow.insertCell(3);
+          cell3.innerHTML = student_Obj[i].FathersName;
+          cell4 = newRow.insertCell(4);
+          cell4.innerHTML = student_Obj[i].Class;
+          cell5 = newRow.insertCell(5);
+          cell5.innerHTML = `<a onClick="onEdit(this)">Edit</a>
+                            <a onClick="onDelete(this)">Delete</a>`;
+        }
+    }
+  }
+  studentsList();
+
   function onFormSubmit() {
        num = document.getElementById("Image").value;
        const email = emailvalidation();
@@ -21,7 +45,6 @@
       var formData = readFormData();
       if (selectedRow == null) insertNewRecord(formData);
       else updateRecord(formData);
-      console.log()
       resetForm();
     }
   }
@@ -42,17 +65,20 @@
       .getElementsByTagName("tbody")[0];
     var newRow = table.insertRow(table.length);
     cell1 = newRow.insertCell(0);
+    cell1.innerHTML = 1;
+    cell1 = newRow.insertCell(1);
     cell1.innerHTML = data.email;
-    cell2 = newRow.insertCell(1);
+    cell2 = newRow.insertCell(2);
     cell2.innerHTML = data.firstName;
-    cell3 = newRow.insertCell(2);
+    cell3 = newRow.insertCell(3);
     cell3.innerHTML = data.lastName;  
-    cell4 = newRow.insertCell(3);
+    cell4 = newRow.insertCell(4);
     cell4.innerHTML = data.Image;
-    cell5 = newRow.insertCell(4);
+    cell5 = newRow.insertCell(5);
     cell5.innerHTML = `<a onClick="onEdit(this)">Edit</a>
                          <a onClick="onDelete(this)">Delete</a>`;
     add_Student();
+    location.reload();
   }
   
   function resetForm() {
@@ -66,24 +92,55 @@
   function onEdit(td) {
       document.getElementById("urlValidationError").innerHTML= "";
     selectedRow = td.parentElement.parentElement;
-    document.getElementById("Email_Id").value = selectedRow.cells[0].innerHTML;
-    document.getElementById("First_Name").value = selectedRow.cells[1].innerHTML;
-    document.getElementById("Last_Name").value = selectedRow.cells[2].innerHTML;
-    document.getElementById("Image").value = selectedRow.cells[3].innerHTML;
+    document.getElementById("Email_Id").value = selectedRow.cells[1].innerHTML;
+    document.getElementById("First_Name").value = selectedRow.cells[2].innerHTML;
+    document.getElementById("Last_Name").value = selectedRow.cells[3].innerHTML;
+    document.getElementById("Image").value = selectedRow.cells[4].innerHTML;
   }
   function updateRecord(formData) {
-    selectedRow.cells[0].innerHTML = formData.email;
-    selectedRow.cells[1].innerHTML = formData.firstName;
-    selectedRow.cells[2].innerHTML = formData.lastName;
-    selectedRow.cells[3].innerHTML = formData.Image;
+    selectedRow.cells[1].innerHTML = formData.email;
+    selectedRow.cells[2].innerHTML = formData.firstName;
+    selectedRow.cells[3].innerHTML = formData.lastName;
+    selectedRow.cells[4].innerHTML = formData.Image;
+    var students = new student( 
+      Math.floor(Math.random()*(999-100+1)+100),
+      formData.email,
+      formData.firstName,
+      formData.lastName,
+      formData.Image  
+    );
+    var data = [];
+      data = data.concat(students);
+      var student_Data= localStorage.getItem("students"); 
+      student_Data = JSON.parse(student_Data);
+      console.log(data);
+      console.log( student_Data);
+      console.log(selectedRow.cells[0].innerHTML);
+      var index = selectedRow.cells[0].innerHTML - 1;
+      student_Data[index] = data[0];
+      console.log(student_Data);
+      student_Data = JSON.stringify(student_Data);
+      localStorage.setItem("students", student_Data);
+      location.reload();
   }
   
+
   function onDelete(td) {
       document.getElementById("urlValidationError").innerHTML= "";
       if (confirm("Are you sure to delete this record ?")) {
       row = td.parentElement.parentElement;
+      var index = row.rowIndex -1; 
       document.getElementById("employeeList").deleteRow(row.rowIndex);
+      var student_Data= localStorage.getItem("students"); 
+      student_Data = JSON.parse(student_Data);
+      console.log( student_Data);
+      student_Data.splice(index , index);
+      console.log( student_Data);
+      student_Data = JSON.stringify(student_Data);
+      localStorage.setItem("students", student_Data);
       resetForm();
+      location.reload();
+      
     }
   }
   
@@ -128,13 +185,24 @@
   function add_Student(){
     var formData = readFormData();
         var students = new student( 
-          count,
+          Math.floor(Math.random()*(999-100+1)+100),
           formData.email,
           formData.firstName,
           formData.lastName,
           formData.Image  
         );
-        count++;
-        students_Data = JSON.stringify(students);
-        localStorage.setItem("Students",students_Data)
+        var data = [];
+        data = data.concat(students);
+        var student_Data= localStorage.getItem("students"); 
+        student_Data = JSON.parse(student_Data);
+          if(student_Data != null){
+            data = data.concat(student_Data);
+            data = JSON.stringify(data);         
+            localStorage.setItem("students", data);          
+          }
+          else{
+            data = JSON.stringify(data);
+            localStorage.setItem("students", data); 
+          }
+        
   }
