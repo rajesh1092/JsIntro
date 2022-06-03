@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" , href="loginpage.css" />
+  </head>
+  <body>
+    <h2>Login Form</h2>
+    
+      <div class="imgcontainer">
+        <img src="img_avatar2.png" alt="Avatar" class="avatar" />
+      </div>
+
+      <div class="container">
+        <label  ><b>Email</b></label>       
+        <input id="username"    type="text" pattern="(?=.*[a-z])(?=.*[A-Z]).{8,}" placeholder="Enter Username" 
+        title="Must contain alphabets and one uppercase and lowercase letter, and at least 8 or more characters" required /> 
+        <span id = "myPopup" style="color:red; font-size: small;"></span> <br><br> 
+
+        <label ><b>Password</b></label>
+        <input
+          id="password"
+          type="password"
+          pattern="(?=.*[\ ^ ${ } [ ] ( ) . + ? | - & @ # *])(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6}" 
+          title="Must contain one special character and one uppercase and lowercase letter, and length must be 6 letters"
+          placeholder="Enter Password"
+          required
+        />
+        <span id = "myPop" style="color:red; font-size: small;" ></span> <br><br> 
+        
+        <button type="submit" id="submit" >Login</button>
+        
+      </div>
+   
+    
+  </body>
+  <script src="loginpage.js"></script>
+</html>

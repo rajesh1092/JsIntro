@@ -25,3 +25,28 @@ var matrix = [
         console.log(i , j);
       }
     }
+
+    while(i< rowMax || j<colMax) {
+      for(let row = i, col = j; col < colMax && row >=0 ;
+      col++,row--){
+          k=0;
+          if(ind%2 === 0){         
+              arr[row][col].push(res[K]);
+              k++;
+              // console.log(row,col);
+          }else{
+              arr[row][col].push(res[K]);
+              k++;
+              //console.log("row"+ row,"col"+col);
+          }         
+          ind++;
+          i++
+          if(i> rowMax-1 && j < colMax){
+              i = rowMax-1
+              j++
+          }
+  
+      }
+
+}
+con

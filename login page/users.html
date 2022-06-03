@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- CSS only -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+      crossorigin="anonymous"
+    />
+    <link href="users.css" rel="stylesheet">
+  </head>
+  <body>
+    <h1 style="justify-content: center; align-items: center">Users list</h1>
+    <div
+      id="list"
+      style="
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+      "
+    ></div>
+    <!-- Button trigger modal -->
+<!--<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Launch demo modal
+</button>-->
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="Update_user" id="Update_User">Update user</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body " id="Modal_Body">
+        <div class="mb-3">
+        <label class="label">Email</label>
+        <input class="modal_input" id="mUser_Mail" >
+        </div>
+        <div class="mb-3">
+        <label class="label">First Nmae</label>
+        <input class="modal_input" id="mUser_first_name" >
+        </div>
+        <div class="mb-3">
+        <label class="label">Last Name</label>
+        <input class="modal_input" id="mUser_last_name" >
+        </div>
+        <div class="mb-3">
+        <label class="label">Image</label>
+        <input class="modal_input" id="mUser_avatar" >
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>   
+  <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+      crossorigin="anonymous"
+    ></script>
+    <script src="users.js"></script>
+  </body>
+
+</html>

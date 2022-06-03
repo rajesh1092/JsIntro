@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        JavaScript CRUD Example 
+    </title>
+    <link rel="stylesheet" href="newusers.css">
+</head>
+
+<body>
+
+	<h1><center>JavaScript CRUD Example </center></h1>
+	<hr>
+			<div class="employee-form">
+                <form onsubmit="event.preventDefault();onFormSubmit();" autocomplete="off">
+                    <div> 
+                        <label>Email Id* </label><label style="color: red;" id="emailValidationError"></label>
+                        <input type="text" name="Email_Id" id="Email_Id">
+                    </div>
+                    <div>
+                        <label>First Name</label>
+                        <input type="text" name="First_Name" id="First_Name">
+                    </div>
+                    <div>
+                        <label>Last Name</label>
+                        <input type="text" name="Last_Name" id="Last_Name">
+                    </div>
+                    <div>
+                        <label>Image* </label></label><label style="color: red;" id="urlValidationError"></label>
+                        <input type="text" name="Image" id="Image">
+                    </div>
+                    <div  class="form-action-buttons">
+                        <input type="submit" value="Submit">
+                    </div>
+                </form>
+		</div>
+		<br/>
+		<div class = "employees-table">
+                <table class="list" id="employeeList">
+                    <thead>
+                        <tr>
+                            <th>Email Id</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th >Image</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+        </div>
+    <script src="newusers.js"></script>
+</body>
+</html>

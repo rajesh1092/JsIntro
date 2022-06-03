@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<htmml>
+    <body>
+        Input
+        <input type="text" placeholder=" enter text" id="text" name="text"><br><br>
+        <h3 id="one"></h3><br><br>
+        <td> Enter Password </td> 
+        <input type="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])" placeholder="password" id="password"> 
+        <span id = "message" style="color:red"> </span> <br><br>  
+        <h3 id="two"></h3><br><br>
+        checkbox
+        <input type="checkbox" id="check"><br><br>
+        <h3 id="three"></h3><br><br>
+        radiobutton
+        <input type="radio" id="radio">
+        <input type="radio" id="radio_1"><br><br>
+        <h3 id="four"></h3><br>
+        <h3 id="radio_2"></h3><br><br>
+        dropdown
+        <select name="dropdown" id="drop">
+            <option value="volvo">Volvo</option>
+            <option value="saab">Saab</option>
+            <option value="mercedes">Mercedes</option>
+            <option value="audi">Audi</option>
+          </select><br><br>
+          <h3 id="five"></h3><br><br>
+          dropdown
+        <select name="dropdown" id="multi" multiple="multiple">
+            <option value="volvo">Volvo</option>
+            <option value="saab">Saab</option>
+            <option value="mercedes">Mercedes</option>
+            <option value="audi">Audi</option>
+          </select><br><br>
+          <h3 id="six"></h3><br><br>
+          <button type="submit" id="submit" >ok</button>
+    </body>
+    <script>
+      var pass = 0;
+        const input = document.getElementById("text");      
+        const check = document.getElementById('check');
+        const radio = document.getElementById('radio');
+        const radio1 = document.getElementById('radio_1');
+        const drop = document.getElementById('drop');
+        const input_O = document.getElementById('one');
+        const pass_O = document.getElementById('two');
+        const check_O = document.getElementById('three');
+        const radio_O = document.getElementById('four');
+        const radio1_O = document.getElementById('radio_2');
+        const drop_O = document.getElementById('five');
+        const mDrop_O = document.getElementById('six');
+ 
+ 
+
+  document.getElementById('submit').onclick = function() {
+   pass = document.getElementById("password").value;
+  //check empty password field  
+  if(pass == "") {  
+     document.getElementById("message").innerHTML = "**Fill the password please!";  
+     return false;  
+  }  
+   
+ //minimum password length validation  
+  if(pass.length < 8) {  
+     document.getElementById("message").innerHTML = "**Password length must be atleast 8 characters";  
+     return false;  
+  }  
+  
+//maximum length of password validation  
+  if(pass.length > 15) {  
+     document.getElementById("message").innerHTML = "**Password length must not exceed 15 characters";  
+     return false;  
+  } else {  
+    //document.getElementById("message").innerHTML = "*";
+    pass_O.innerHTML= pass;  
+  } 
+  
+  var select = document.getElementById('multi');
+    var selected = [...select .selectedOptions]
+                    .map(option => option.value);
+                    mDrop_O.innerHTML= selected;
+                    input_O.innerHTML= input.value;                   
+                    check_O.innerHTML= check.checked;
+                    radio_O.innerHTML= radio.checked;
+                    radio1_O.innerHTML= radio1.checked;
+                    drop_O.innerHTML= drop.value;
+} 
+    </script>
+</htmml>

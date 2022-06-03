@@ -11,5 +11,8 @@
     "url": "git@github.com-raj:rama1092/JsIntro.git"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "jquery": "^3.6.0"
+  }
 }
