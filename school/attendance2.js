@@ -6,6 +6,7 @@
 // }
   
   var selectedRow = null;
+  
   function studentsList(){
     var student_Obj = localStorage.getItem("students");
     student_Obj = JSON.parse(student_Obj);
@@ -134,7 +135,7 @@
       var student_Data= localStorage.getItem("students"); 
       student_Data = JSON.parse(student_Data);
       console.log( student_Data);
-      student_Data.splice(index , index);
+      student_Data.splice(index , 1);
       console.log( student_Data);
       student_Data = JSON.stringify(student_Data);
       localStorage.setItem("students", student_Data);

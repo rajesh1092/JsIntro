@@ -93,7 +93,7 @@ function resetForm() {
 }
 
 function onEdit(td) {
-    document.getElementById("urlValidationError").innerHTML= "";
+   // document.getElementById("urlValidationError").innerHTML= "";
   selectedRow = td.parentElement.parentElement;
   document.getElementById("Email_Id").value = selectedRow.cells[0].innerHTML;
   document.getElementById("First_Name").value = selectedRow.cells[1].innerHTML;
